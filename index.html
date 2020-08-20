@@ -1,13 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
+    <title>Weather App</title>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=>, initial-scale=1.0" />
-    <title>Document</title>
+    <link href="src/styles.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/6341717ca4.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
   </head>
+
   <body>
-    <h1>
-      Hello
-    </h1>
+    <div class="container">
+      <a href="#" class="badge badge-info">New York</a>
+      <a href="#" class="badge badge-info">Paris</a>
+      <a href="#" class="badge badge-info">San Diego</a>
+
+      <form id="form-search">
+        <input
+          type="text"
+          id="city-lookup"
+          placeholder="Enter City or Zip                🔎"
+          autocomplete="on"
+          style="height: 34px; width: 220px;"
+          autofocus="on"
+        />
+        <input type="submit" id="city-search-submit" />
+        <button type="button" id="current-location">Current Location</button>
+      </form>
+
+      <br />
+
+      <div class="row">
+        <div class="col-4">
+          <h1 id="city">
+            📍Philadelphia
+          </h1>
+
+          <h4>
+            <span id="date">Thursday, July 17</span>
+            <br />
+            <span id="description">Sunny</span>
+          </h4>
+
+          <h2>83°F <i class="fas fa-sun" style="font-size: 40px;"></i></h2>
+        </div>
+
+        <div class="col-4">
+          <h3 class="details">
+            Wind: <span id="wind">0</span>% <br />
+            Humidity: <span id="humidity">50</span>%
+          </h3>
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="row">
+        <div class="card">
+          <div class="card-body">
+            <i class="fas fa-cloud-sun"></i>
+            <h5 class="card-title">FRI</h5>
+            <p class="card-text">84/80°F</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <i class="fas fa-sun"></i>
+            <h5 class="card-title">SAT</h5>
+            <p class="card-text">90/84°F</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <i class="fas fa-cloud-sun"></i>
+            <h5 class="card-title">SUN</h5>
+            <p class="card-text">79/74°F</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <i class="fas fa-sun"></i>
+            <h5 class="card-title">MON</h5>
+            <p class="card-text">88/82°F</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <i class="fas fa-cloud-rain"></i>
+            <h5 class="card-title">TUES</h5>
+            <p class="card-text">77/70°F</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="src/index.js"></script>
   </body>
 </html>
