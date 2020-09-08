@@ -22,6 +22,7 @@ form {
 h1 {
   color: black;
   font-size: 30px;
+  text-size-adjust: none;
   position: relative;
   left: 25px;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
@@ -33,6 +34,7 @@ h4 {
   top: -10px;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 20px;
+  text-transform: capitalize;
 }
 
 h2 {
