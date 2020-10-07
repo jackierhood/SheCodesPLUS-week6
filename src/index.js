@@ -39,7 +39,7 @@ dateElement.innerHTML = `${day}, ${month} ${date} - ${hours}:${minutes}`;
 
 function displayWeatherCondition(response) {
   document.querySelector("#city").innerHTML = `📍${response.data.name}`;
-  document.querySelector("h2").innerHTML = `${Math.round(
+  document.querySelector("#temp").innerHTML = `${Math.round(
     response.data.main.temp
   )}°F`;
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
@@ -49,7 +49,6 @@ function displayWeatherCondition(response) {
   document.querySelector("#description").innerHTML =
     response.data.weather[0].description;
   let iconElement = document.querySelector("#icon");
-
   iconElement.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
