@@ -35,6 +35,14 @@ let minutes = now.getMinutes();
 
 dateElement.innerHTML = `${day}, ${month} ${date} - ${hours}:${minutes}`;
 
+function formatHours(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    minutes = `0${minutes}`;
+  }
+}
+
 // City Change & API
 
 function displayWeatherCondition(response) {
@@ -56,10 +64,36 @@ function displayWeatherCondition(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
+function displayForecast(response) {
+  let forecastElement = document.querySelector("#forecast");
+  let forecast = null;
+
+  for (let index = 0; index < 6; index++) {
+    forecast = response.data.list[index];
+    forecastElement.innerHTML += `
+      <div class="col-2">
+          <h5>${formatHours(forecast.dt) * 1000}</h5>
+          <img src="http://openweathermap.org/img/wn/${
+            forecast[0].icon
+          }@2x.png}" />
+          <div class="weather-forecast-temperature">
+          <strong>
+          ${Math.round(forecast.main.temp_max)}°
+          </strong> 
+          ${Math.round(forecast.main.temp_min)}°
+        </div>
+      </div>
+      `;
+  }
+}
+
 function search(city) {
   let apiKey = "8617d97507bbab7e839be3563b098506";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(displayWeatherCondition);
+
+  apiUrl = `https://api.openweatherapp.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=imperial`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function cityInput(event) {
