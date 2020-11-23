@@ -66,6 +66,7 @@ function displayWeatherCondition(response) {
 
 function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = null;
   let forecast = null;
 
   for (let index = 0; index < 6; index++) {
@@ -92,7 +93,7 @@ function search(city) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(displayWeatherCondition);
 
-  apiUrl = `https://api.openweatherapp.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=imperial`;
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(displayForecast);
 }
 
