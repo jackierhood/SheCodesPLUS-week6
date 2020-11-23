@@ -32,6 +32,9 @@ let month = months[now.getMonth()];
 
 let hours = now.getHours();
 let minutes = now.getMinutes();
+if (minutes < 10) {
+  minutes = `0${minutes}`;
+}
 
 dateElement.innerHTML = `${day}, ${month} ${date} - ${hours}:${minutes}`;
 
@@ -39,8 +42,14 @@ function formatHours(timestamp) {
   let date = new Date(timestamp);
   let hours = date.getHours();
   if (hours < 10) {
+    hours = `0${hours}`;
+  }
+
+  let minutes = date.getHours();
+  if (minutes < 10) {
     minutes = `0${minutes}`;
   }
+  return `${hours}:${minutes}`;
 }
 
 // City Change & API
@@ -68,7 +77,6 @@ function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
   forecastElement.innerHTML = null;
   let forecast = null;
-
   for (let index = 0; index < 6; index++) {
     forecast = response.data.list[index];
     forecastElement.innerHTML += `
@@ -76,7 +84,7 @@ function displayForecast(response) {
           <h3>${formatHours(forecast.dt * 1000)}</h3>
           <img class ="forecast-icon" src="http://openweathermap.org/img/wn/${
             forecast.weather[0].icon
-          }@2x.png}" />
+          }@2x.png" />
           <div class="weather-forecast-temperature">
           <strong>
           ${Math.round(forecast.main.temp_max)}°
